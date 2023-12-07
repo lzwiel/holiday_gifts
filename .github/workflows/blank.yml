@@ -1,18 +1,36 @@
-            - name: Cache
-  uses: actions/cache@v3.3.2
-  with:
-    # A list of files, directories, and wildcard patterns to cache and restore
-    path: 
-    # An explicit key for restoring and saving the cache
-    key: 
-    # An ordered list of keys to use for restoring stale cache if no cache hit occurred for key. Note `cache-hit` returns false in this case.
-    restore-keys: # optional
-    # The chunk size used to split up large files during upload, in bytes
-    upload-chunk-size: # optional
-    # An optional boolean when enabled, allows windows runners to save or restore caches that can be restored or saved respectively on other platforms
-    enableCrossOsArchive: # optional, default is false
-    # Fail the workflow if cache entry is not found
-    fail-on-cache-miss: # optional, default is false
-    # Check if a cache entry exists for the given input(s) (key, restore-keys) without downloading the cache
-    lookup-only: # optional, default is false
+import datetime
+
+holiday_gifts = {
+    "元旦": "红包",
+    "情人节": "玫瑰花",
+    "清明节": "纸钱",
+    "劳动节": "水果礼盒",
+    "端午节": "粽子",
+    "中秋节": "月饼",
+    "国庆节": "旅游礼包"
+}
+current_date = datetime.datetime.now().date()
+
+if str(current_date.month) + "-" + str(current_date.day) == "1-1":
+  holiday = "元旦"
+elif str(current_date.month) + "-" + str(current_date.day) == "2-14":
+  holiday = "情人节"
+elif str(current_date.month) + "-" + str(current_date.day) == "4-4":
+  holiday = "清明节"
+elif str(current_date.month) + "-" + str(current_date.day) == "5-1":
+  holiday = "劳动节"
+elif str(current_date.month) + "-" + str(current_date.day) == "5-5":
+  holiday = "端午节"
+elif str(current_date.month) + "-" + str(current_date.day) == "9-15":
+  holiday = "中秋节"
+elif str(current_date.month) + "-" + str(current_date.day) == "10-1":
+  holiday = "国庆节"
+else:
+  holiday = None
+
+if holiday:
+  gift = holiday_gifts[holiday]
+  print("今天是" + holiday + "，送您一个" + gift + "！")
+else:
+  print("今天不是节日，暂无礼物！")
           
